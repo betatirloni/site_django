@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'qf)$j1b$uz)+6ldc)@pmf+fqwv+i)4a%ut$l28-&!&2x%s4ijj'
+SECRET_KEY = os.environ['qf)$j1b$uz)+6ldc)@pmf+fqwv+i)4a%ut$l28-&!&2x%s4ijj'] 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -74,12 +74,25 @@ WSGI_APPLICATION = 'enquete.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+} """
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd3rveoujfon6nq',
+        # 'NAME': os.path.join(BASE_DIR, 'mydb'),
+        'USER': 'rynwtwsfexsxri',
+        'PASSWORD': '68a13cd799c811e2476c439289baf5b3aec16409305505a2debccd4568c93d54',
+        'HOST': 'ec2-54-235-167-210.compute-1.amazonaws.com',
+        'PORT': '5432', # 8000 is default
+    }
 }
+
 
 
 # Password validation
@@ -119,3 +132,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
