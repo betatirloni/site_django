@@ -1,2 +1,2 @@
-web gunicorn enquete.wsgi
+web gunicorn polls.wsgi
  
